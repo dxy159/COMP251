@@ -1,0 +1,39 @@
+3) 
+
+The algorithm involves a sequence of steps:
+	1) Sort all the elements from smallest to greatest
+	2) Add the closed set [a[i], a[i] + unit length] to solution
+	3) Remove all elements in the array covered by [a[i], a[i] + unit length]
+	4) Keep going until the array is empty, in which we have reached our optimal solution
+
+The greedy choice would to be to choose the start of the first interval as the first element in the set. The elements must be included in at least one interval, so we have an x < a[0] with a[0] included in [x, x + unitlength], we can shift the interval to [a[0], a[0] + unitlength], since there are no elements less than it. 
+
+For the optimal substructure, after we find the first interbal, the next interval will be determined by the array's remaining elements. The remaining elements constitute an new set in which we can find the smallest set of unitlength intervals. Thus, the optimal solution being the union of the current solution and the solution through the array's remaining elements.
+
+For run time, assuming we use mergesort or quicksort for efficiency, we get O(n logn). Additionally, iterating through each element would take O(n) time.
+
+Result: O(n logn) + O(n) = O(n logn)
+
+
+4) 
+
+Will be presented by an illustration
+
+
+5)
+
+Left -> Right Proof:
+
+If a graph G is bipartite, there exists sets of vertices A and B such that every edge must go from A -> B or B -> A.
+
+Using proof by contradiction, suppose G has an odd cycle C {v1, v2,..., vn, v1} where all the odd vertices are in A and all the even vertices are in B. But because vn is odd, vn must be in A, so C must have an edge between vn and v1. There is a contradiction because v1 is also odd, and also belongs in A, so G must be bipartite. 
+
+Right -> Left Proof:
+
+Using proof by contradiction, suppose graph G has even cycles C, we can divide the graph into two sets of vertices A and B. A is a set of vertices where the shortest path from each element in A to v0 has odd length and each element in B to v0 has even length. If vertices a1 and a2 in set A are adjacent, we get an odd cycle {v0,..., a1, a2,..., v0}. Same thing for B, if b1 and b2 are adjacent, we also get an odd cycle. Therefore, there is a contradiction, so it is safe to assume that graph G has only even cycles. 
+
+If G does not contain an odd cycle, then we can split it into sets of vertices A and B where neither A and B contain adjacent vertices, therefore we get a bipartite graph.
+
+
+
+
